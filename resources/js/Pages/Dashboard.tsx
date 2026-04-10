@@ -1,7 +1,9 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import { Head, Link, usePage } from '@inertiajs/react';
 
 export default function Dashboard() {
+    const user = usePage().props.auth.user as any;
+
     return (
         <AuthenticatedLayout
             header={
@@ -17,6 +19,14 @@ export default function Dashboard() {
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900">
                             You're logged in!
+                            {user?.role === 'admin' && (
+                                <div className="mt-8 border-t pt-6">
+                                    <h3 className="text-lg font-bold mb-4">Admin Controls</h3>
+                                    <Link href="/admin/dashboard" className="bg-black text-white px-6 py-3 font-bold uppercase rounded hover:bg-gray-800 transition-colors">
+                                        Open HQ Admin Panel
+                                    </Link>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
