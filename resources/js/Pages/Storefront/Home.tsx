@@ -22,21 +22,16 @@ export default function Home({ products }: { products: any[] }) {
                             transition={{ delay: index * 0.1 }}
                             className="group"
                         >
-                            <Link href={route('product.show', product.slug)} className="block relative bg-gray-100 aspect-[4/5] border-4 border-black mb-6 overflow-hidden">
+                            <Link href={route('product.show', product.slug)} className="block relative bg-gray-100 aspect-[4/5] border-4 border-black mb-6 overflow-hidden hover:border-gray-500 transition-colors duration-200">
                                 {product.images && product.images[0] ? (
                                     <img 
                                         src={`/storage/${product.images[0].path}`} 
                                         alt={product.name} 
-                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-105"
+                                        className="w-full h-full object-cover"
                                     />
                                 ) : (
                                     <div className="w-full h-full flex items-center justify-center font-black uppercase text-4xl text-gray-300">No Image</div>
                                 )}
-                                
-                                {/* Brutalist Add to Cart Overlay */}
-                                <div className="absolute inset-0 bg-black/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <span className="text-white text-3xl font-black uppercase border-4 border-white p-4">View Details</span>
-                                </div>
                             </Link>
                             
                             <div className="flex justify-between items-start">
